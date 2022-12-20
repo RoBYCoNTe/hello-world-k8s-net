@@ -1,15 +1,15 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hello-world-app
+  name: hello-world-k8s-net
 spec:
   rules:
-    - host: hello-world-app.robyconte.com
+    - host: hello-world-k8s-net.local
       http:
         paths:
           - pathType: ImplementationSpecific
             backend:
               service:
-                name: hello-world-app
+                name: hello-world-k8s-net
                 port:
                   number: 80

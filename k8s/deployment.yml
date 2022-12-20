@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-app
+  name: hello-world-k8s-net
   labels:
-    app: hello-world-app
+    app: hello-world-k8s-net
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world-app
+      app: hello-world-k8s-net
   template:
     metadata:
       labels:
-        app: hello-world-app
+        app: hello-world-k8s-net
     spec:
       containers:
-        - name: hello-world-app
-          image: robyconte/net-hello-world-app
+        - name: hello-world-k8s-net
+          image: robyconte/hello-world-k8s-net
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -28,15 +28,13 @@ spec:
               cpu: 100m
               memory: 128Mi
           env:
-            - name: ASPNETCORE_ENVIRONMENT
-              value: "Production"
             - name: DATA_PATH
               value: "/app/data"
           volumeMounts:
             - name: data
               mountPath: /app/data
       imagePullSecrets:
-        - name: robyconte
+        - name: dockerhub
       volumes:
         - name: data
           persistentVolumeClaim:
