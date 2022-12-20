@@ -1,0 +1,15 @@
+# Create basic persistent volume
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: storage
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: storage
+  hostPath:
+    path: /mnt/data
+    type: DirectoryOrCreate

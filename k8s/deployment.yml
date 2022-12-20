@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-app
+  labels:
+    app: hello-world-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-app
+  template:
+    metadata:
+      labels:
+        app: hello-world-app
+    spec:
+      containers:
+        - name: hello-world-app
+          image: robyconte/net-hello-world-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: DATA_PATH
+              value: "/app/data"
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+      imagePullSecrets:
+        - name: robyconte
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: storage

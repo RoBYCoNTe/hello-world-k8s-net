@@ -1,0 +1,13 @@
+# Create PVC for the persistent volume
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: storage
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
