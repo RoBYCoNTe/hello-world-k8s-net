@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-k8s-net
+  name: helloworld-net
   labels:
-    app: hello-world-k8s-net
+    app: helloworld-net
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-world-k8s-net
+      app: helloworld-net
   template:
     metadata:
       labels:
-        app: hello-world-k8s-net
+        app: helloworld-net
     spec:
       containers:
-        - name: hello-world-k8s-net
-          image: robyconte/hello-world-k8s-net
+        - name: helloworld-net
+          image: sandb0x.azurecr.io/helloworld-net:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -33,8 +33,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /app/data
-      imagePullSecrets:
-        - name: dockerhub
+      # Azure doesn not need this:
+      # imagePullSecrets:
+      #   - name: dockerhub
       volumes:
         - name: data
           persistentVolumeClaim:

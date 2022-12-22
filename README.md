@@ -1,3 +1,3 @@
-# README
+# [Deploy a .net app on a local kind cluster](https://blog.robertoconterosito.it/posts/deploy-local-kind-net-app/)
 
-See my [blog post](https://blog.robertoconterosito.it/posts/deploy-local-kind-net-app/) for more information.
+Read the blog post for more details.

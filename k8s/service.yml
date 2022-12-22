@@ -1,15 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-world-k8s-net
+  name: helloworld-net
   labels:
-    app: hello-world-k8s-net
+    app: helloworld-net
 spec:
-  type: LoadBalancer
+  selector:
+    app: helloworld-net
   ports:
     - port: 80
-      targetPort: 80
-      protocol: TCP
-      name: http
-  selector:
-    app: hello-world-k8s-net
